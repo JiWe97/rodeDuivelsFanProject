@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ConfirmationController!{% endblock %}
+
+{% block body %}
+<style>
+     .container { 
+        display:flex; 
+        justify-content: center; 
+        align-items: center; 
+        height:80vh;  
+    }
+    .container > div { 
+        flex: 1; 
+        padding: 20px; 
+        box-sizing: border-box; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
+    }
+</style>
+
+<div class="container">
+    <div class="innercontainer">
+        <p>We hebben jouw keuze goed ontvangen. Van zodra het artikel beschikbaar is, zullen we jouw supportersclub hiervan berichten.</p>
+        <p>Voor vragen gelieve te mailen naar <a href="mailto:1895@footbel.com">1895@footbel.com</a>
+    </div>
+</div>
+
+{% endblock %}

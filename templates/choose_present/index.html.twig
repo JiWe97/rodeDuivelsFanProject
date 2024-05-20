@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChoosePresentController!{% endblock %}
+
+{% block body %}
+<style>
+    .container { 
+        display:flex; 
+        justify-content: center; 
+        align-items: center; 
+        height:80vh;  
+    }
+    .container > div { 
+        flex: 1; 
+        padding: 20px; 
+        box-sizing: border-box; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
+    }
+</style>
+<h2>Klik het artikel naar keuze aan:</h2>
+<div class="container">
+    <div class="first-box">
+        <h1>1</h1>
+    </div>
+    <div class="second-box">
+        <h1>2</h1>
+    </div>
+    <div class="third-box">
+        <h1>3</h1>
+    </div>
+    <div class="fourth-box">
+        <h1>4</h1>
+    </div>
+</div>
+
+{% endblock %}
