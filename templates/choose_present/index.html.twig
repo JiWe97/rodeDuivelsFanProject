@@ -21,7 +21,7 @@
         text-align: center; 
     }
 </style>
-<h2>Klik het artikel naar keuze aan:</h2>
+<h2>Klik het artikel naar keuze aan:</h2>{# 
 <div class="container">
     <div class="first-box">
         <h1>1</h1>
@@ -35,6 +35,13 @@
     <div class="fourth-box">
         <h1>4</h1>
     </div>
-</div>
+</div> #}
+<form method="post">
+    <div class="container">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+</form>
 
 {% endblock %}
