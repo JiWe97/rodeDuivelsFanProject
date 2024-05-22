@@ -20,16 +20,18 @@ class PresentsType extends AbstractType
         ];
 
         $builder 
-            ->add('choiceField', ChoiceType::class, [
-                'choices' => $choices,
-                'choice_attr' => function($choice, $key, $value) use ($choices) {
-                    // Define image paths for each choice
-                    $imagePaths = [
-                        'sjaal_1' => 'images/sjaal_1.jpg',
-                        'sjaal_2' => 'images/sjaal_2.jpg',
-                        'pet' => 'images/pet.jpg',
-                        'vlag' => 'images/vlag.jpg',
-                    ];
+        ->add('choiceField', ChoiceType::class, [
+            'choices' => $choices,
+            'expanded' => true, // Display as radio buttons
+            'multiple' => false, // Allow only one selection
+            'choice_attr' => function($choice, $key, $value) use ($choices) {
+                // Define image paths for each choice
+                $imagePaths = [
+                    'sjaal_1' => 'Images/sjaal_1.jpg',
+                    'sjaal_2' => 'Images/sjaal_2.jpg',
+                    'pet' => 'Images/pet.jpg',
+                    'vlag' => 'Images/vlag.jpg',
+                ];
 
                     // Retrieve image path for the current choice
                     $imagePath = $imagePaths[$value] ?? '';
@@ -37,6 +39,8 @@ class PresentsType extends AbstractType
                     // Set data-image attribute with the image path
                     return ['data-image' => $imagePath];
                 },
+                'required' => true,
+                'label' => 'Kies hier je cadeau: ',
             ])
             ->add('submit', SubmitType::class)
         ;

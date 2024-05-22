@@ -25,7 +25,7 @@ class LoginController extends AbstractController
                 if ($this->checkIfUserExists($form->getData())) {
                     dump($form->getData());
                     $this->addFlash('error', 'User does not exist');
-                    return $this->redirectToRoute('app_confirmation');
+                    return $this->redirectToRoute('app_existing_user');
                 } else {
                     dump($form->getData());
                     return $this->redirectToRoute('app_choose_present');

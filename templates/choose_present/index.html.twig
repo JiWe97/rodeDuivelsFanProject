@@ -4,45 +4,37 @@
 
 {% block body %}
 <style>
+    body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
     .container { 
-        display:flex; 
-        justify-content: center; 
-        align-items: center; 
-        height:80vh;  
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .choiceField input[type="radio"] {
+        margin-left: 50px;
     }
     .container > div { 
-        flex: 1; 
-        padding: 20px; 
-        box-sizing: border-box; 
-        display: flex; 
-        flex-direction: column; 
-        justify-content: center; 
-        align-items: center; 
-        text-align: center; 
+        margin: 10px 0;
     }
 </style>
-<h2>Klik het artikel naar keuze aan:</h2>{# 
-<div class="container">
-    <div class="first-box">
-        <h1>1</h1>
-    </div>
-    <div class="second-box">
-        <h1>2</h1>
-    </div>
-    <div class="third-box">
-        <h1>3</h1>
-    </div>
-    <div class="fourth-box">
-        <h1>4</h1>
-    </div>
-</div> #}
 <form method="post">
-    <div class="container">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
-
-    </div>
+    {{ form_start(form) }}
+        <div class="container">
+            <div class="choiceField">
+            {{ form_widget(form.choiceField) }}
+            </div>
+            <div class="button">
+                {{ form_widget(form.submit) }}
+            </div>
+        </div>
+    {{ form_end(form) }}
 </form>
 
 {% endblock %}

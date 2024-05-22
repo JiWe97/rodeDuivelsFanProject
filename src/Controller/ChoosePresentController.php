@@ -30,7 +30,6 @@ class ChoosePresentController extends AbstractController
             $lidnummer = $request->getSession()->get('userData')['lidnummer'];
             $geboortedatum = $request->getSession()->get('userData')['geboortedatum'];
             $formattedGeboortedatum = $geboortedatum->format('Y-m-d');
-            var_dump($formattedGeboortedatum, $lidnummer);
         }
 
         return $this->render('choose_present/index.html.twig', [
