@@ -11,9 +11,7 @@ class ConfirmationController extends AbstractController
     #[Route('/confirmation', name: 'app_confirmation')]
     public function index(): Response
     {
-        return $this->render('confirmation/index.html.twig', [
-            'controller_name' => 'ConfirmationController',
-        ]);
+        return $this->render('confirmation/index.html.twig');
     }
 
 }

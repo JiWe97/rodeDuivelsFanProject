@@ -22,21 +22,18 @@ class PresentsType extends AbstractType
         $builder 
         ->add('choiceField', ChoiceType::class, [
             'choices' => $choices,
-            'expanded' => true, // Display as radio buttons
-            'multiple' => false, // Allow only one selection
+            'expanded' => true,
+            'multiple' => false,
             'choice_attr' => function($choice, $key, $value) use ($choices) {
-                // Define image paths for each choice
                 $imagePaths = [
-                    'sjaal_1' => 'Images/sjaal_1.jpg',
-                    'sjaal_2' => 'Images/sjaal_2.jpg',
-                    'pet' => 'Images/pet.jpg',
-                    'vlag' => 'Images/vlag.jpg',
+                    'sjaal_1' => './public/Images/sjaal_1.jpg',
+                    'sjaal_2' => './public/Images/sjaal_2.jpg',
+                    'pet' => './public/Images/pet.jpg',
+                    'vlag' => './public/Images/vlag.jpg',
                 ];
 
-                    // Retrieve image path for the current choice
                     $imagePath = $imagePaths[$value] ?? '';
 
-                    // Set data-image attribute with the image path
                     return ['data-image' => $imagePath];
                 },
                 'required' => true,

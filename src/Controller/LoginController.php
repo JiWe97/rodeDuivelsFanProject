@@ -16,26 +16,26 @@ class LoginController extends AbstractController
             $form = $this->createForm(UserDataType::class);
             $form->handleRequest($request);
 
-           
-
             if ($form->isSubmitted() && $form->isValid()) {
                 $session = $request->getSession();
                 $session->set('userData', $form->getData());
 
                 if ($this->checkIfUserExists($form->getData())) {
-                    dump($form->getData());
-                    $this->addFlash('error', 'User does not exist');
                     return $this->redirectToRoute('app_existing_user');
                 } else {
-                    dump($form->getData());
                     return $this->redirectToRoute('app_choose_present');
                 }
             }
-
             return $this->render('login/index.html.twig', [
-                'controller_name' => 'LoginController',
                 'form' => $form->createView(),
             ]);
+        }
+
+    
+    #[Route('/', name: 'app')]
+        public function GoToLogin(): Response
+        {
+            return $this->redirectToRoute('app_login');
         }
 
     private function checkIfUserExists(array $data): bool
@@ -53,7 +53,6 @@ class LoginController extends AbstractController
         } else {
             return false;
         }
-
         return false;
     }
 }

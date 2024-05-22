@@ -11,8 +11,6 @@ class ExistingUserController extends AbstractController
     #[Route('/existing/user', name: 'app_existing_user')]
     public function index(): Response
     {
-        return $this->render('existing_user/index.html.twig', [
-            'controller_name' => 'ExistingUserController',
-        ]);
+        return $this->render('existing_user/index.html.twig');
     }
 }

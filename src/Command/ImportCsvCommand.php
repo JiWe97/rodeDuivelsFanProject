@@ -31,7 +31,7 @@ class ImportCsvCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $connection = $this->container->get('doctrine')->getConnection();
-        $filePath = '/Users/jillwets/Downloads/rodeDuivelsFanProject/public/fan_artikel_2024.csv';
+        $filePath = './public/fan_artikel_2024.csv';
 
         if (($handle = fopen($filePath, "r")) !== false) {
             while (($data = fgetcsv($handle)) !== false) {
@@ -50,6 +50,7 @@ class ImportCsvCommand extends Command
             fclose($handle);
         } else {
             $output->writeln("<error>Could not open the CSV file.</error>");
+            return Command::FAILURE;
         }
 
         return Command::SUCCESS;

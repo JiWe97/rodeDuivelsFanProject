@@ -18,22 +18,15 @@ class ChoosePresentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) { 
             $session = $request->getSession();
-            $userData = $session->get('userData');
+            $lidnummer = $request->getSession()->get('userData')['lidnummer'];
+            $geboortedatum = $request->getSession()->get('userData')['geboortedatum'];
             $cadeau = $form->get('choiceField')->getData();
-            $lidnummer = $request->getSession()->get('userData')['lidnummer'];
-            $geboortedatum = $request->getSession()->get('userData')['geboortedatum'];
-
+            
             $this->saveStringToFile($geboortedatum, $lidnummer, $cadeau);
-
             return $this->redirectToRoute('app_confirmation'); 
-        } else {
-            $lidnummer = $request->getSession()->get('userData')['lidnummer'];
-            $geboortedatum = $request->getSession()->get('userData')['geboortedatum'];
-            $formattedGeboortedatum = $geboortedatum->format('Y-m-d');
-        }
+        } 
 
         return $this->render('choose_present/index.html.twig', [
-            'controller_name' => 'ChoosePresentController',
             'form' => $form->createView(),
         ]);
     }
