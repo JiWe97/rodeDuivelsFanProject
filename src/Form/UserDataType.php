@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class UserDataType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('geboortedatum', DateType::class, ['widget' => 'single_text', 'required' => true])
@@ -27,3 +27,4 @@ class UserDataType extends AbstractType
         ]);
     }
 }
+ 

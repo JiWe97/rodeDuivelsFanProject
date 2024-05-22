@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Form\PresentsType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -32,19 +32,20 @@ class ChoosePresentController extends AbstractController
             $formattedGeboortedatum = $geboortedatum->format('Y-m-d');
             var_dump($formattedGeboortedatum, $lidnummer);
         }
+
         return $this->render('choose_present/index.html.twig', [
             'controller_name' => 'ChoosePresentController',
-            'form' => $form->createView(), 
+            'form' => $form->createView(),
         ]);
     }
- 
-    public function saveStringToFile($geboortedatum, $lidnummer, $cadeau) {
+
+    public function saveStringToFile($geboortedatum, $lidnummer, $cadeau): void
+    {
         $file = fopen("fan_artikel_2024.csv", "a");
         $currentdate = date('Y-m-d H:i:s');
         $formattedGeboortedatum = $geboortedatum->format('Y-m-d');
-        $string = $currentdate . "," . $formattedGeboortedatum . "," . $lidnummer . "," . $cadeau . "\r";
+        $string = $currentdate . "," . $formattedGeboortedatum . "," . $lidnummer . "," . $cadeau . "\n";
         fwrite($file, $string);
         fclose($file);
-
     }
 }
